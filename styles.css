@@ -1,0 +1,324 @@
+/* Created By: Mohan Nukala */
+
+body {
+  font-family: 'Maven Pro', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+header {
+  background-color: #2954FF;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+header nav {
+  margin: 10px 0;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+.search-section {
+  padding: 10px;
+  text-align: center;
+}
+
+.search-section input {
+  width: 60%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.brand-name-section {
+  display: none;
+}
+
+#search {
+  width: 60%;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#search:focus {
+  border-color: #2954FF;
+  box-shadow: 0 0 0 3px rgba(41, 84, 255, 0.3);
+}
+
+#main-content {
+  display: flex;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+aside {
+  width: 250px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+aside h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+#filters label,
+#filters-overlay label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  line-height: 20px;
+}
+
+#filters input[type="checkbox"],
+#filters-overlay input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#filters input[type="checkbox"] + span,
+#filters-overlay input[type="checkbox"] + span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  background-color: white;
+  border-radius: 3px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+#filters input[type="checkbox"]:checked + span,
+#filters-overlay input[type="checkbox"]:checked + span {
+  background-color: #2954FF;
+  border-color: #2954FF;
+}
+
+#filters input[type="checkbox"]:checked + span::before,
+#filters-overlay input[type="checkbox"]:checked + span::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 0 2px 2px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#product-area {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#sort {
+  display: flex;
+  align-items: center;
+}
+
+#sort label {
+  margin-right: 10px;
+}
+
+#price {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+#price:focus {
+  outline: none;
+  border-color: #2954FF;
+}
+
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.product-item {
+  background-color: white;
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 3 / 4;
+}
+
+.product-item h2 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.product-item p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.product-item .price {
+  font-weight: bold;
+  color: #333;
+}
+
+#load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  background-color: #0039FF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#load-more:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 84, 255, 0.3);
+}
+
+#load-more:active {
+  background-color: #002a9e;
+}
+
+.hidden {
+  display: none;
+}
+
+#error {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#loading {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+#hamburger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #333;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+#hamburger-menu.show {
+  transform: translateX(0);
+}
+
+#filters-overlay {
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+#filters-overlay h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+#hamburger-icon {
+  background-color: #2954FF;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#hamburger-icon:hover {
+  background-color: rgba(41, 84, 255, 0.8);
+}
+
+#hamburger-icon:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(41, 84, 255, 0.5);
+}
+
+#brand-name {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #main-content {
+    padding: 0;
+  }
+
+  #product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #filters {
+    display: none;
+  }
+
+  .brand-name-section {
+    display: flex;
+  }
+
+  #hamburger-menu {
+    display: block;
+  }
+
+  header nav {
+    display: none;
+  }
+}
+
+/* Created By: Mohan Nukala */
